@@ -1,0 +1,36 @@
+[project]
+name = "gnns-in-computernetworks"
+version = "0.1.0"
+description = "Graph Neural Networks in Computer Networks"
+readme = "README.md"
+requires-python = ">=3.14"
+
+dependencies = [
+    "jupyter",
+    "torch==2.12.1",
+    "pyg-lib",
+    "torch-scatter",
+    "torch-sparse",
+    "torch_geometric",
+    "torch-geometric-temporal[index]",
+    "torch-geometric-signed-directed",
+]
+
+[dependency-groups]
+dev = [{ include-group = "lint" }, { include-group = "type" }]
+type = ["pyrefly", "ty"]
+lint = ["ruff"]
+
+[tool.uv.sources]
+pyg-lib = { index = "pyg-cpu-wheels" }
+torch-scatter = { index = "pyg-cpu-wheels" }
+torch-sparse = { index = "pyg-cpu-wheels" }
+
+[[tool.uv.index]]
+name = "pyg-cpu-wheels"
+url = "https://data.pyg.org/whl/torch-2.12.1+cpu.html"
+format = "flat"
+explicit = true
+
+[tool.uv.workspace]
+members = ["gh-repos/GNNs-in-ComputerNetworks"]
